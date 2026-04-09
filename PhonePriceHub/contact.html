@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PhonePriceHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar (same as index.html) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="index.html">
+            <i class="fas fa-mobile-alt me-2"></i>PhonePriceHub
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">All Mobiles</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+            </ul>
+            <a href="cart.html" class="btn btn-outline-light position-relative">
+                <i class="fas fa-shopping-cart"></i> Cart
+                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="fw-bold mb-4">Get in Touch</h2>
+            <p class="lead">We'd love to hear from you!</p>
+            <form id="contact-form">
+                <div class="mb-3">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="fw-bold">Contact Information</h5>
+                    <hr>
+                    <p><i class="fas fa-map-marker-alt me-3 text-primary"></i>Street No.01 Near Grid station Muslim Town Vehari, Pakistan</p>
+                    <p><i class="fas fa-phone me-3 text-primary"></i>+92 300 1214459</p>
+                    <p><i class="fas fa-envelope me-3 text-primary"></i>support@phonepricehub.com</p>
+                    <p><i class="fas fa-clock me-3 text-primary"></i>Monday - Saturday: 9:00 AM - 9:00 PM</p>
+                    <hr>
+                    <div class="social-links text-center">
+                        <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-info me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-danger me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-success"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white-50 py-4 mt-5">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2024 PhonePriceHub. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/cart.js"></script>
+<script>updateCartCount();</script>
+</body>
+</html>
