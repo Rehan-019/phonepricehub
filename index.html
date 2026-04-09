@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePriceHub - Best Mobile Prices in Pakistan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+        }
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .brand-card {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            cursor: pointer;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .brand-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            color: #007bff;
+        }
+        .product-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 16px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="index.html">
+            <i class="fas fa-mobile-alt me-2"></i>PhonePriceHub
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">All Mobiles</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <form class="d-flex me-3" id="nav-search-form">
+                <input class="form-control form-control-sm me-2" type="search" id="nav-search-input" placeholder="Search phones..." style="width: 200px;">
+                <button class="btn btn-outline-light btn-sm" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <a href="cart.html" class="btn btn-outline-light position-relative">
+                <i class="fas fa-shopping-cart"></i> Cart
+                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section text-white text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Find Your Perfect Smartphone</h1>
+        <p class="lead mb-4">Compare prices, specs, and features from all major brands</p>
+        <a href="products.html" class="btn btn-light btn-lg">Shop Now <i class="fas fa-arrow-right ms-2"></i></a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="feature-card p-4">
+                    <i class="fas fa-tags fa-3x text-primary mb-3"></i>
+                    <h5>Best Prices</h5>
+                    <p>Guaranteed lowest prices in Pakistan</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="feature-card p-4">
+                    <i class="fas fa-truck fa-3x text-primary mb-3"></i>
+                    <h5>Free Delivery</h5>
+                    <p>Free shipping on orders over Rs. 50,000</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="feature-card p-4">
+                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                    <h5>Warranty</h5>
+                    <p>1 year official warranty</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="feature-card p-4">
+                    <i class="fas fa-headset fa-3x text-primary mb-3"></i>
+                    <h5>24/7 Support</h5>
+                    <p>Customer support always available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Featured Smartphones</h2>
+        <div class="row" id="featured-products">
+            <div class="col-12 text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-3">Loading products...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brands Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Shop by Brand</h2>
+        <div class="row text-center">
+            <div class="col-md-2 col-4 mb-3">
+                <div class="brand-card p-3" data-brand="Samsung">
+                    <i class="fab fa-android fa-3x mb-2"></i>
+                    <h6>Samsung</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-4 mb-3">
+                <div class="brand-card p-3" data-brand="Apple">
+                    <i class="fab fa-apple fa-3x mb-2"></i>
+                    <h6>Apple</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-4 mb-3">
+                <div class="brand-card p-3" data-brand="Google">
+                    <i class="fab fa-google fa-3x mb-2"></i>
+                    <h6>Google</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-4 mb-3">
+                <div class="brand-card p-3" data-brand="OnePlus">
+                    <i class="fas fa-mobile-alt fa-3x mb-2"></i>
+                    <h6>OnePlus</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-4 mb-3">
+                <div class="brand-card p-3" data-brand="Xiaomi">
+                    <i class="fas fa-mobile-alt fa-3x mb-2"></i>
+                    <h6>Xiaomi</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-4 mb-3">
+                <div class="brand-card p-3" data-brand="Tecno">
+                    <i class="fas fa-mobile-alt fa-3x mb-2"></i>
+                    <h6>Tecno</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <h3>Subscribe to our Newsletter</h3>
+        <p>Get latest deals and price drops directly to your inbox</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Your email address" id="newsletter-email">
+                    <button class="btn btn-primary" type="button" id="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white-50 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="text-white">PhonePriceHub</h5>
+                <p>Pakistan's #1 mobile phone price comparison website.</p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-white">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                    <li><a href="products.html" class="text-white-50 text-decoration-none">Products</a></li>
+                    <li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                    <li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-white">Follow Us</h5>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#" class="text-white-50"><i class="fab fa-whatsapp fa-2x"></i></a>
+            </div>
+        </div>
+        <hr class="mt-4">
+        <div class="text-center">
+            <p class="mb-0">&copy; 2024 PhonePriceHub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ==================== PRODUCT DATA WITH LOCAL IMAGES ====================
+const products = [
+    {
+        id: 1,
+        name: "Samsung Galaxy S24 Ultra",
+        brand: "Samsung",
+        price: 384999,
+        image: "assets/images/s24-ultra.jpg",
+        fallbackIcon: "fab fa-android",
+        specs: {
+            display: "6.8-inch Dynamic AMOLED 2X, 120Hz",
+            processor: "Snapdragon 8 Gen 3",
+            ram: "12GB",
+            storage: "256GB",
+            battery: "5000mAh",
+            camera: "200MP Quad Camera",
+            os: "Android 14",
+            weight: "232g",
+            colors: ["Titanium Gray", "Titanium Black"]
+        },
+        variants: [
+            { storage: "256GB", ram: "12GB", price: 384999, color: "Titanium Gray" },
+            { storage: "512GB", ram: "12GB", price: 414999, color: "Titanium Black" }
+        ]
+    },
+    {
+        id: 2,
+        name: "Apple iPhone 15 Pro Max",
+        brand: "Apple",
+        price: 459999,
+        image: "assets/images/iphone15pm.jpg",
+        fallbackIcon: "fab fa-apple",
+        specs: {
+            display: "6.7-inch Super Retina XDR, 120Hz",
+            processor: "A17 Pro",
+            ram: "8GB",
+            storage: "256GB",
+            battery: "4422mAh",
+            camera: "48MP Triple Camera",
+            os: "iOS 17",
+            weight: "221g",
+            colors: ["Natural Titanium", "White Titanium"]
+        },
+        variants: [
+            { storage: "256GB", ram: "8GB", price: 459999, color: "Natural Titanium" },
+            { storage: "512GB", ram: "8GB", price: 529999, color: "White Titanium" }
+        ]
+    },
+    {
+        id: 3,
+        name: "Google Pixel 8 Pro",
+        brand: "Google",
+        price: 279999,
+        image: "assets/images/pixel8pro.jpg",
+        fallbackIcon: "fab fa-google",
+        specs: {
+            display: "6.7-inch LTPO OLED, 120Hz",
+            processor: "Google Tensor G3",
+            ram: "12GB",
+            storage: "128GB",
+            battery: "5050mAh",
+            camera: "50MP Triple Camera",
+            os: "Android 14",
+            weight: "213g",
+            colors: ["Obsidian", "Porcelain"]
+        },
+        variants: [
+            { storage: "128GB", ram: "12GB", price: 279999, color: "Obsidian" },
+            { storage: "256GB", ram: "12GB", price: 304999, color: "Porcelain" }
+        ]
+    },
+    {
+        id: 4,
+        name: "OnePlus 12",
+        brand: "OnePlus",
+        price: 229999,
+        image: "assets/images/oneplus12.jpg",
+        fallbackIcon: "fas fa-mobile-alt",
+        specs: {
+            display: "6.82-inch LTPO AMOLED, 120Hz",
+            processor: "Snapdragon 8 Gen 3",
+            ram: "12GB",
+            storage: "256GB",
+            battery: "5400mAh",
+            camera: "50MP Triple Camera",
+            os: "Android 14",
+            weight: "220g",
+            colors: ["Flowy Emerald", "Silky Black"]
+        },
+        variants: [
+            { storage: "256GB", ram: "12GB", price: 229999, color: "Flowy Emerald" },
+            { storage: "512GB", ram: "16GB", price: 259999, color: "Silky Black" }
+        ]
+    },
+    {
+        id: 5,
+        name: "Xiaomi 14 Ultra",
+        brand: "Xiaomi",
+        price: 299999,
+        image: "assets/images/xiaomi14.jpg",
+        fallbackIcon: "fas fa-microchip",
+        specs: {
+            display: "6.73-inch LTPO AMOLED, 120Hz",
+            processor: "Snapdragon 8 Gen 3",
+            ram: "16GB",
+            storage: "512GB",
+            battery: "5000mAh",
+            camera: "50MP Quad Camera",
+            os: "Android 14",
+            weight: "229g",
+            colors: ["Black", "White"]
+        },
+        variants: [
+            { storage: "512GB", ram: "16GB", price: 299999, color: "Black" },
+            { storage: "1TB", ram: "16GB", price: 329999, color: "White" }
+        ]
+    },
+    {
+        id: 6,
+        name: "Tecno Camon 30 Premier",
+        brand: "Tecno",
+        price: 89999,
+        image: "assets/images/tecno30.jpg",
+        fallbackIcon: "fas fa-camera",
+        specs: {
+            display: "6.77-inch AMOLED, 120Hz",
+            processor: "MediaTek Dimensity 8200",
+            ram: "12GB",
+            storage: "512GB",
+            battery: "5000mAh",
+            camera: "50MP Triple Camera",
+            os: "Android 14",
+            weight: "210g",
+            colors: ["Honeycomb Green", "Black"]
+        },
+        variants: [
+            { storage: "512GB", ram: "12GB", price: 89999, color: "Honeycomb Green" },
+            { storage: "512GB", ram: "12GB", price: 89999, color: "Black" }
+        ]
+    }
+];
+
+// ==================== CART FUNCTIONS ====================
+function getCart() {
+    const cart = localStorage.getItem("cart");
+    return cart ? JSON.parse(cart) : [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const cart = getCart();
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const badge = document.getElementById("cart-count");
+    if (badge) badge.textContent = totalItems;
+}
+
+function addToCart(productId, variantIndex, quantity = 1) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return false;
+    
+    const variant = product.variants[variantIndex];
+    const cart = getCart();
+    
+    const existingItemIndex = cart.findIndex(
+        item => item.productId === productId && item.variantIndex === variantIndex
+    );
+    
+    if (existingItemIndex !== -1) {
+        cart[existingItemIndex].quantity += quantity;
+    } else {
+        cart.push({
+            productId: productId,
+            productName: product.name,
+            variantIndex: variantIndex,
+            storage: variant.storage,
+            ram: variant.ram,
+            color: variant.color,
+            price: variant.price,
+            image: product.image,
+            quantity: quantity
+        });
+    }
+    
+    saveCart(cart);
+    return true;
+}
+
+// ==================== DISPLAY FEATURED PRODUCTS ====================
+function displayFeaturedProducts() {
+    const featuredContainer = document.getElementById('featured-products');
+    if (!featuredContainer) return;
+    
+    // Get first 3 products as featured
+    const featured = products.slice(0, 3);
+    
+    featuredContainer.innerHTML = featured.map(product => `
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm product-card">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'${product.fallbackIcon}\' style=\'font-size: 80px; color: #007bff;\'></i>'">
+                </div>
+                <div class="card-body text-center">
+                    <h6 class="card-title fw-bold">${product.name}</h6>
+                    <p class="text-muted small">${product.brand}</p>
+                    <p class="text-primary fw-bold fs-5">Rs. ${product.price.toLocaleString()}</p>
+                    <div class="d-flex gap-2">
+                        <a href="product-detail.html?id=${product.id}" class="btn btn-primary btn-sm flex-grow-1">View Details</a>
+                        <button class="btn btn-success btn-sm quick-add" data-id="${product.id}" data-variant="0">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    // Add quick add to cart functionality
+    document.querySelectorAll('.quick-add').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productId = parseInt(btn.dataset.id);
+            const variantIndex = parseInt(btn.dataset.variant);
+            addToCart(productId, variantIndex, 1);
+            alert('Product added to cart!');
+        });
+    });
+}
+
+// ==================== DISPLAY ALL PRODUCTS (for products.html) ====================
+function displayAllProducts() {
+    const container = document.getElementById('products-container');
+    if (!container) return;
+    
+    container.innerHTML = products.map(product => `
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm product-card">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'${product.fallbackIcon}\' style=\'font-size: 80px; color: #007bff;\'></i>'">
+                </div>
+                <div class="card-body text-center">
+                    <h6 class="card-title fw-bold">${product.name}</h6>
+                    <p class="text-muted small">${product.brand}</p>
+                    <p class="text-primary fw-bold fs-5">Rs. ${product.price.toLocaleString()}</p>
+                    <div class="d-flex gap-2">
+                        <a href="product-detail.html?id=${product.id}" class="btn btn-primary btn-sm flex-grow-1">View Details</a>
+                        <button class="btn btn-success btn-sm quick-add" data-id="${product.id}" data-variant="0">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    // Add quick add to cart functionality
+    document.querySelectorAll('.quick-add').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productId = parseInt(btn.dataset.id);
+            const variantIndex = parseInt(btn.dataset.variant);
+            addToCart(productId, variantIndex, 1);
+            alert('Product added to cart!');
+        });
+    });
+}
+
+// ==================== BRAND CLICK HANDLER ====================
+function setupBrandCards() {
+    const brandCards = document.querySelectorAll('.brand-card');
+    brandCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const brand = card.dataset.brand;
+            if (brand) {
+                localStorage.setItem('selectedBrand', brand);
+                window.location.href = 'products.html';
+            }
+        });
+    });
+}
+
+// ==================== NEWSLETTER SUBSCRIPTION ====================
+function setupNewsletter() {
+    const subscribeBtn = document.getElementById('subscribe-btn');
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', () => {
+            const email = document.getElementById('newsletter-email').value;
+            if (email && email.includes('@')) {
+                alert('Thank you for subscribing! You will receive our latest deals.');
+                document.getElementById('newsletter-email').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    }
+}
+
+// ==================== SEARCH HANDLER ====================
+function setupSearch() {
+    const searchForm = document.getElementById('nav-search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const searchTerm = document.getElementById('nav-search-input').value;
+            if (searchTerm) {
+                localStorage.setItem('searchTerm', searchTerm);
+                window.location.href = 'products.html';
+            }
+        });
+    }
+}
+
+// ==================== FILTER FUNCTION (for products.html) ====================
+function filterProducts() {
+    const searchTerm = document.getElementById('search-filter')?.value.toLowerCase() || '';
+    const brand = document.getElementById('brand-filter')?.value || '';
+    const maxPrice = parseInt(document.getElementById('price-filter')?.value) || 600000;
+    
+    let filtered = products;
+    
+    if (searchTerm) {
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm));
+    }
+    if (brand) {
+        filtered = filtered.filter(p => p.brand === brand);
+    }
+    filtered = filtered.filter(p => p.price <= maxPrice);
+    
+    const container = document.getElementById('products-container');
+    if (!container) return;
+    
+    if (filtered.length === 0) {
+        container.innerHTML = '<div class="col-12 text-center py-5"><h4>No products found</h4></div>';
+        return;
+    }
+    
+    container.innerHTML = filtered.map(product => `
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm product-card">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'${product.fallbackIcon}\' style=\'font-size: 80px; color: #007bff;\'></i>'">
+                </div>
+                <div class="card-body text-center">
+                    <h6 class="card-title fw-bold">${product.name}</h6>
+                    <p class="text-muted small">${product.brand}</p>
+                    <p class="text-primary fw-bold fs-5">Rs. ${product.price.toLocaleString()}</p>
+                    <div class="d-flex gap-2">
+                        <a href="product-detail.html?id=${product.id}" class="btn btn-primary btn-sm flex-grow-1">View Details</a>
+                        <button class="btn btn-success btn-sm quick-add" data-id="${product.id}" data-variant="0">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    document.querySelectorAll('.quick-add').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productId = parseInt(btn.dataset.id);
+            addToCart(productId, 0, 1);
+            alert('Product added to cart!');
+        });
+    });
+}
+
+// ==================== INITIALIZATION ====================
+document.addEventListener('DOMContentLoaded', () => {
+    // Check which page we're on
+    if (window.location.pathname.includes('products.html')) {
+        displayAllProducts();
+        
+        // Setup filters on products page
+        const searchFilter = document.getElementById('search-filter');
+        const brandFilter = document.getElementById('brand-filter');
+        const priceFilter = document.getElementById('price-filter');
+        
+        if (searchFilter) searchFilter.addEventListener('input', filterProducts);
+        if (brandFilter) brandFilter.addEventListener('change', filterProducts);
+        if (priceFilter) priceFilter.addEventListener('input', filterProducts);
+        
+        // Apply saved brand filter
+        const savedBrand = localStorage.getItem('selectedBrand');
+        if (savedBrand && brandFilter) {
+            brandFilter.value = savedBrand;
+            localStorage.removeItem('selectedBrand');
+            filterProducts();
+        }
+        
+        // Apply saved search term
+        const savedSearch = localStorage.getItem('searchTerm');
+        if (savedSearch && searchFilter) {
+            searchFilter.value = savedSearch;
+            localStorage.removeItem('searchTerm');
+            filterProducts();
+        }
+    } else {
+        // Homepage - show featured products
+        displayFeaturedProducts();
+    }
+    
+    setupBrandCards();
+    setupNewsletter();
+    setupSearch();
+    updateCartCount();
+});
+</script>
+</body>
+</html>
